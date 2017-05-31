@@ -11,22 +11,22 @@ https://archive.ics.uci.edu/ml/datasets/Cervical+cancer+%28Risk+Factors%29
 import warnings
 warnings.filterwarnings("ignore")
 
-# IMPORT MODUELS
+# IMPORT MODULES
 
 import csv              # Used to read CSV files
-
 import time             # Keep track of time
 
 import matplotlib.pyplot as plt     # Generating 2D charts
 import pandas as pd
-import keras            # Used for neural network
 from keras.models import Sequential
 from keras.layers import Dense
 from keras import optimizers        # Used for optimization
-
 import numpy as np      # Used to analyze data and arrays
 
-# DECLARE VARIABLES
+# hold the dataset
+dataset = pd.read_csv('risk_factors_cervical_cancer.csv')
+X_dataset = dataset.iloc[:, 0:12].values
+y_dataset = dataset.iloc[:, 28].values
 
 master_array = []       # Stores all the raw data
 master_array_2 = []     # Stores all the treated data

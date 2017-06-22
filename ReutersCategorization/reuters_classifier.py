@@ -46,6 +46,7 @@ cachedStopWords = stopwords.words("english")
 
 
 def tokenize(text):
+
     min_length = 3
     words = map(lambda word: word.lower(), word_tokenize(text))
     words = [word for word in words if word not in cachedStopWords]
@@ -56,6 +57,7 @@ def tokenize(text):
 
 
 def represent(documents):
+
     train_docs_id = list(filter(lambda doc: doc.startswith("train"), documents))
     test_docs_id = list(filter(lambda doc: doc.startswith("test"), documents))
 
@@ -102,5 +104,4 @@ documents = reuters.fileids()
 train_docs, train_labels, test_docs, test_labels = represent(documents)
 model = train_classifier(train_docs, train_labels)
 predictions = model.predict(test_docs)
-print(predictions)
 evaluate(test_labels, predictions)
